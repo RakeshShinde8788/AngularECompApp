@@ -1,0 +1,24 @@
+/* Make all product images uniform */
+.product-img {
+  height: 250px;           /* fixed height */
+  object-fit: cover;       /* crop instead of stretch */
+  object-position: center; /* focus on center crop */
+}
+
+/* Hover effect */
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none; /* cleaner look */
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Remove blue link style */
+.product-card,
+.product-card:hover {
+  color: inherit;
+}

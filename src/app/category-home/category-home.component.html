@@ -1,0 +1,10 @@
+<div *ngIf="categories.length > 0;else NoCategories">
+  <h3>All Categories</h3>
+<ol>
+    <li *ngFor="let cat of categories"><a [routerLink]="['/category', cat.id]" routerLinkActive="active">{{ cat.name }}</a></li>
+</ol>  
+</div>
+
+<ng-template #NoCategories>
+<h3>No Categories Found</h3>
+</ng-template>

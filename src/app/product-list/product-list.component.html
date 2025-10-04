@@ -1,0 +1,22 @@
+<div *ngIf="products.length > 0; else NoProducts">
+  <h3>Products</h3>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let prod of products" class="col">
+      <!-- Whole card is clickable -->
+      <a [routerLink]="['/product', prod.id]" class="card product-card text-decoration-none">
+        <!-- Image with uniform crop -->
+        <img [src]="prod.imgPath" class="card-img-top product-img" alt="{{ prod.name }}">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ prod.name }}</h5>
+          <h6>{{ prod.price | currency : 'INR' : 'symbol' }}</h6>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<ng-template #NoProducts>
+  <h3>No Products Found</h3>
+</ng-template>

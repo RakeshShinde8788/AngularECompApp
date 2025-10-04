@@ -1,0 +1,37 @@
+<div class="container mt-5" *ngIf="product; else NotFound">
+  <div class="row">
+    <div class="col-md-6">
+      <img [src]="product.imgPath" class="img-fluid rounded product-detail-img" [alt]="product.name">
+    </div>
+
+    <div class="col-md-6">
+      <h2>{{ product.name }}</h2>
+
+      <!-- Show discounted + original price -->
+      <div *ngIf="product.discount > 0; else noDiscount">
+        <h4 class="text-success">
+          {{ product.price | discount:product.discount | currency:'INR':'symbol' }}
+        </h4>
+        <p class="text-muted">
+          <s>{{ product.price | currency:'INR':'symbol' }}</s>
+          <span class="ms-2 text-danger">({{ product.discount }}% OFF)</span>
+        </p>
+      </div>
+
+      <ng-template #noDiscount>
+        <h4 class="text-success">
+          {{ product.price | currency:'INR':'symbol' }}
+        </h4>
+      </ng-template>
+
+      <p><strong>Category ID:</strong> {{ product.categoryId }}</p>
+
+      <button class="btn btn-primary me-2">Buy Now</button>
+      <button class="btn btn-outline-secondary">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #NotFound>
+  <div class="alert alert-danger mt-5">Product not found!</div>
+</ng-template>
